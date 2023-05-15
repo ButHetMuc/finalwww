@@ -21,7 +21,8 @@ public class Order {
     @JoinColumn(name = "account_id")
     @JsonBackReference
     private Account account;
-    @OneToMany(mappedBy = "order",fetch = FetchType.EAGER,cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    @OneToMany(mappedBy = "order",fetch = FetchType.EAGER,cascade = {CascadeType.DETACH,CascadeType.MERGE,
+            CascadeType.PERSIST,CascadeType.REFRESH})
 //    @JsonManagedReference
     private List<OrderDetail> orderDetails;
 

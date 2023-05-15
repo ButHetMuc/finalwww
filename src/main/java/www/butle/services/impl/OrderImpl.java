@@ -23,15 +23,12 @@ public class OrderImpl implements OrderServices {
 
     @Override
     public Order add(Order order) {
-
-        List<OrderDetail> details = new ArrayList<>();
         repo.save(order);
         for(OrderDetail detail: order.getOrderDetails()){
             detail.setOrder(order);
             detailRepo.save(detail);
-            OrderDetail opt = detailRepo.findOrderDetailByOrderId(order.getId());
-            details.add(opt);
         }
+        List<OrderDetail> details = detailRepo.findOrderDetailByOrderId(order.getId());
         order.setOrderDetails(details);
         return order;
     }
@@ -43,7 +40,18 @@ public class OrderImpl implements OrderServices {
         if(order1 == null){
             return null;
         }
-        repo.save(order);
+//        List<OrderDetail> details = order1.getOrderDetails();
+//        details.removeAll(details);
+//        order1.setOrderDetails(details);
+//        repo.save(order1);
+
+//        repo.save(order);
+//        for(OrderDetail detail: order.getOrderDetails()){
+//            detail.setOrder(order);
+//            detailRepo.save(detail);
+//        }
+//        List<OrderDetail> details1 = detailRepo.findOrderDetailByOrderId(order.getId());
+//        order.setOrderDetails(details1);
         return order;
     }
 
