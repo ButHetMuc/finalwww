@@ -1,5 +1,6 @@
 package www.butle.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
@@ -13,23 +14,21 @@ public class OrderDetail {
     private double price;
     private double sale;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JsonIgnore
-    @JoinColumn(name = "order_id",referencedColumnName = "id")
+    @ManyToOne()
+    @JsonBackReference
+    @JoinColumn(name = "order_id")
     private Order order;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JsonIgnore
+    @ManyToOne()
+//    @JsonIgnore
     @JoinColumn(name = "product_id")
     private Product product;
     public OrderDetail() {
     }
 
-    public OrderDetail(int quantity, double price, double sale, Order order, Product product) {
+    public OrderDetail(int quantity, double price, double sale) {
         this.quantity = quantity;
         this.price = price;
         this.sale = sale;
-        this.order = order;
-        this.product = product;
     }
 
     public OrderDetail(Order order) {
@@ -100,13 +99,4 @@ public class OrderDetail {
         return Objects.hash(id);
     }
 
-    @Override
-    public String toString() {
-        return "OrderDetail{" +
-                "id=" + id +
-                ", quantity=" + quantity +
-                ", price=" + price +
-                ", sale=" + sale +
-                '}';
-    }
 }

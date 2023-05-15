@@ -17,7 +17,6 @@ public class Product {
     private double sale;
     private String category;
     @OneToMany(mappedBy = "product")
-    @JsonIgnore
     private List<OrderDetail> orderDetails ;
 
     public Product() {
@@ -112,16 +111,4 @@ public class Product {
         return Objects.hash(id);
     }
 
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", quantity=" + quantity +
-                ", imageUri='" + imageUri + '\'' +
-                ", price=" + price +
-                ", sale=" + sale +
-                ", category='" + category + '\'' +
-                '}';
-    }
 }

@@ -17,7 +17,7 @@ public class Account {
     private String address;
     private String phoneNumber;
     @OneToMany(mappedBy = "account",cascade = CascadeType.MERGE)
-    @JsonIgnore
+//    @JsonIgnore
     private List<Order> orders;
 
     public Account() {
@@ -112,16 +112,4 @@ public class Account {
         return Objects.hash(id);
     }
 
-    @Override
-    public String toString() {
-        return "Account{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                '}';
-    }
 }

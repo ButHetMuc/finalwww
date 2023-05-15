@@ -1,6 +1,7 @@
 package www.butle.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -15,12 +16,11 @@ public class Order {
     private String state;
     private double cost;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JsonIgnore
+    @ManyToOne()
     @JoinColumn(name = "account_id")
     private Account account;
-    @OneToMany(mappedBy = "order",cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-    @JsonIgnore
+    @OneToMany(mappedBy = "order",fetch = FetchType.EAGER,cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    @JsonManagedReference
     private List<OrderDetail> orderDetails;
 
     public Order() {
@@ -117,15 +117,4 @@ public class Order {
         return Objects.hash(id);
     }
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", address='" + address + '\'' +
-                ", orderDate='" + orderDate + '\'' +
-                ", state='" + state + '\'' +
-                ", cost=" + cost +
-                '}';
-    }
 }
