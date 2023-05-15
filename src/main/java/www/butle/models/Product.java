@@ -17,7 +17,7 @@ public class Product {
     private double sale;
     private String category;
     @OneToMany(mappedBy = "product")
-//    @JsonIgnore
+    @JsonIgnore
     private List<OrderDetail> orderDetails ;
 
     public Product() {

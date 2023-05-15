@@ -16,11 +16,11 @@ public class Order {
     private double cost;
 
     @ManyToOne(fetch = FetchType.EAGER)
-//    @JsonIgnore
+    @JsonIgnore
     @JoinColumn(name = "account_id")
     private Account account;
     @OneToMany(mappedBy = "order",cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-//    @JsonIgnore
+    @JsonIgnore
     private List<OrderDetail> orderDetails;
 
     public Order() {

@@ -50,4 +50,12 @@ public class OrderController {
         Message message = new Message(true, "updated Successful");
         return new ResponseEntity<>(message, HttpStatus.OK);
     }
+    @GetMapping("/all")
+    public ResponseEntity<List<Order>> getAll(){
+        List<Order> orders = services.getAll();
+        if(orders.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(orders,HttpStatus.OK);
+    }
 }

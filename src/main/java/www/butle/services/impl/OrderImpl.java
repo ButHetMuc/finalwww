@@ -61,4 +61,9 @@ public class OrderImpl implements OrderServices {
     public List<Order> getAllByAccountId(Long accountId) {
         return repo.getOrdersByAccount_Id(accountId);
     }
+
+    @Override
+    public List<Order> getAll() {
+        return repo.findAll();
+    }
 }

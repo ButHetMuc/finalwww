@@ -13,12 +13,12 @@ public class OrderDetail {
     private double price;
     private double sale;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnore
     @JoinColumn(name = "order_id",referencedColumnName = "id")
     private Order order;
     @ManyToOne(fetch = FetchType.EAGER)
-//    @JsonIgnore
+    @JsonIgnore
     @JoinColumn(name = "product_id")
     private Product product;
     public OrderDetail() {

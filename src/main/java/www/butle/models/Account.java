@@ -17,7 +17,7 @@ public class Account {
     private String address;
     private String phoneNumber;
     @OneToMany(mappedBy = "account",cascade = CascadeType.MERGE)
-//    @JsonIgnore
+    @JsonIgnore
     private List<Order> orders;
 
     public Account() {

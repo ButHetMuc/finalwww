@@ -10,4 +10,5 @@ public interface OrderServices {
     public Order update (Order order);
     public boolean delete(Long id);
     public List<Order> getAllByAccountId(Long accountId);
+    public List<Order> getAll();
 }
