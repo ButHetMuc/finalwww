@@ -1,5 +1,6 @@
 package www.butle.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -18,9 +19,10 @@ public class Order {
 
     @ManyToOne()
     @JoinColumn(name = "account_id")
+    @JsonBackReference
     private Account account;
     @OneToMany(mappedBy = "order",fetch = FetchType.EAGER,cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-    @JsonManagedReference
+//    @JsonManagedReference
     private List<OrderDetail> orderDetails;
 
     public Order() {

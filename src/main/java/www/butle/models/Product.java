@@ -1,5 +1,6 @@
 package www.butle.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
@@ -17,6 +18,7 @@ public class Product {
     private double sale;
     private String category;
     @OneToMany(mappedBy = "product")
+    @JsonBackReference
     private List<OrderDetail> orderDetails ;
 
     public Product() {

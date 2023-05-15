@@ -2,6 +2,7 @@ package www.butle.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -19,7 +20,7 @@ public class OrderDetail {
     @JoinColumn(name = "order_id")
     private Order order;
     @ManyToOne()
-//    @JsonIgnore
+//    @JsonManagedReference
     @JoinColumn(name = "product_id")
     private Product product;
     public OrderDetail() {

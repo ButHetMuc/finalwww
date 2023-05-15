@@ -1,6 +1,7 @@
 package www.butle.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,10 @@ public class OrderDetailController {
 
     @GetMapping("")
     public ResponseEntity<List<OrderDetail>> getAll(){
-        return (ResponseEntity<List<OrderDetail>>) services.getAll();
+        List<OrderDetail> orderDetails = services.getAll();
+        if(orderDetails.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(orderDetails, HttpStatus.OK);
     }
 }

@@ -1,6 +1,7 @@
 package www.butle.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class Account {
     private String address;
     private String phoneNumber;
     @OneToMany(mappedBy = "account",cascade = CascadeType.MERGE)
-//    @JsonIgnore
+    @JsonManagedReference
     private List<Order> orders;
 
     public Account() {
